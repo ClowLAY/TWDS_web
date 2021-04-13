@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.ExaminesMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Examines" >
+    <id column="eId" property="eid" jdbcType="INTEGER" />
+    <result column="tId" property="tid" jdbcType="INTEGER" />
+     <result column="eWeek" property="eWeek" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="DOUBLE" />
+    <result column="result" property="result" jdbcType="CHAR" />
+     <result column="etime" property="etime" jdbcType="TIMESTAMP" />
+  </resultMap>
+   <sql id="Base_Column_List" >
+    eId, tId, eWeek,value, result,etime
+  </sql>
+<!--   <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+ 
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.ExaminesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from examines
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from examines
+    where eId = #{eid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from examines
+    where eId = #{eid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.ExaminesExample" >
+    delete from examines
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.ExaminesExample" resultType="java.lang.Integer" >
+    select count(*) from examines
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update examines
+    <set >
+      <if test="record.eid != null" >
+        eId = #{record.eid,jdbcType=INTEGER},
+      </if>
+      <if test="record.tid != null" >
+        tId = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.value != null" >
+        value = #{record.value,jdbcType=DOUBLE},
+      </if>
+      <if test="record.result != null" >
+        result = #{record.result,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update examines
+    set eId = #{record.eid,jdbcType=INTEGER},
+      tId = #{record.tid,jdbcType=INTEGER},
+      value = #{record.value,jdbcType=DOUBLE},
+      result = #{record.result,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Examines" >
+    update examines
+    set tId = #{tid,jdbcType=INTEGER},
+      value = #{value,jdbcType=DOUBLE},
+      result = #{result,jdbcType=CHAR}
+    where eId = #{eid,jdbcType=INTEGER}
+  </update>
+  
+  
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.Examines" >
+    insert into examines (eId, tId,eWeek, value, 
+      result,etime)
+    values (#{eid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER},#{eWeek,jdbcType=INTEGER}, #{value,jdbcType=DOUBLE}, 
+      #{result,jdbcType=CHAR}), #{etime,jdbcType=TIMESTAMP},
+  </insert>
+  
+   -->
+  
+
+  <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Examines" >
+    insert into examines
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        eId,
+      </if>
+      <if test="tid != null" >
+        tId,
+      </if>
+      <if test="eWeek != null" >
+        eWeek,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+       <if test="etime != null" >
+        etime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+       <if test="eWeek != null" >
+       #{eWeek,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=DOUBLE},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=CHAR},
+      </if>
+       <if test="etime != null" >
+       #{etime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectAllByresult" resultMap="examinesAll"   >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,t4.*,t5.*, case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result
+  	 from examines t1,t_courses t2,courses t3,user t4,college t5 where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=t4.userId and t5.c_id=t3.c_id and t1.result='0' 
+  	
+  </select>
+  
+  <!-- 用于分页查询 -->
+    <select id="selectAllByresultPage" resultMap="examinesAll"  parameterType="com.zzptc.twds.pojo.Examines" >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,t4.*,t5.*, case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result
+  	 from examines t1,t_courses t2,courses t3,user t4,college t5 where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=t4.userId and t5.c_id=t3.c_id and t1.result='0'   
+  	 <if test="cId != null" >
+       and  t3.c_id= #{cId,jdbcType=INTEGER}
+      </if>
+      limit  #{beginIndex},#{rows}
+  </select>
+  
+  
+  <select id="selectAllByresult1" resultMap="examinesAll"  >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,t4.*,t5.*, case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result
+  	 from examines t1,t_courses t2,courses t3,user t4,college t5 where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=t4.userId  and  t5.c_id=t3.c_id and t1.result in('1','2')
+  	
+  </select>
+  
+  
+  
+  
+    <select id="selectAll" resultMap="examinesAll"  parameterType="java.lang.Integer" >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result 
+  	from examines t1,t_courses t2,courses t3 where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=#{userid,jdbcType=INTEGER}
+  	
+  </select>
+  
+  <resultMap id="examinesAll" type="com.zzptc.twds.pojo.Examines" >
+	    <id column="eId" property="eid" jdbcType="INTEGER" />
+	    <result column="tId" property="tid" jdbcType="INTEGER" />
+	     <result column="eWeek" property="eWeek" jdbcType="INTEGER" />
+	    <result column="value" property="value" jdbcType="DOUBLE" />
+	    <result column="result" property="result" jdbcType="CHAR" />
+     	<result column="etime" property="etime" jdbcType="TIMESTAMP" />
+   		<association property="tCourses" javaType="com.zzptc.twds.pojo.TCourses">
+    		 <id column="tId" property="tid" jdbcType="INTEGER" />
+		    <result column="co_id" property="coId" jdbcType="INTEGER" />
+		    <result column="userId" property="userid" jdbcType="INTEGER" />
+		    <result column="cl_id" property="clId" jdbcType="INTEGER" />
+		    <result column="state" property="state" jdbcType="CHAR" />
+   		</association>
+   		<association property="user" javaType="com.zzptc.twds.pojo.User" >
+    		 <id column="userId" property="userid" jdbcType="INTEGER" />
+		    <result column="name" property="name" jdbcType="VARCHAR" />
+    	</association>
+   		<association property="courses" javaType="com.zzptc.twds.pojo.Courses">
+    		 <id column="co_id" property="coId" jdbcType="INTEGER" />
+    		 <result column="c_id" property="cId" jdbcType="INTEGER" />
+		    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+		    <result column="co_term" property="coTerm" jdbcType="VARCHAR" />
+   		</association>
+   		<association property="college" javaType="com.zzptc.twds.pojo.College">
+    		 <id column="c_id" property="cId" jdbcType="INTEGER" />
+   			 <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    </association>
+    
+  </resultMap>
+  
+    <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Examines" >
+    update examines
+    <set >
+      <if test="tid != null" >
+        tId = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=DOUBLE},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=CHAR},
+      </if>
+    </set>
+    where eId = #{eid,jdbcType=INTEGER}
+  </update>
+ 
+  
+  
+   <select id="selectAllByCld" resultMap="examinesAll"  parameterType="java.lang.Integer" >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,t4.*,t5.*, case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result
+  	 from examines t1,t_courses t2,courses t3,user t4,college t5 
+  	 where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=t4.userId and t5.c_id=t3.c_id and t1.result='0' and t5.c_id=#{cId,jdbcType=INTEGER}
+  	
+  	
+  </select>
+  
+  
+  <select id="selectAllByCld1" resultMap="examinesAll"  parameterType="java.lang.Integer" >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,t4.*,t5.*, case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result
+  	 from examines t1,t_courses t2,courses t3,user t4,college t5
+  	  where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=t4.userId  and  t5.c_id=t3.c_id and t1.result in('1','2') and t5.c_id=#{cId,jdbcType=INTEGER}
+  	
+  </select>
+  
+  
+     <select id="selectByresultandUserId" resultMap="examinesAll" parameterType="com.zzptc.twds.pojo.Examines" >
+  
+  	select eId,eWeek,value,DATE_FORMAT(etime,'%Y-%m-%d %k:%i:%s') as etime,t2.*,t3.*,case t1.result when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as result 
+  	from examines t1,t_courses t2,courses t3 
+  	where t1.tId=t2.tId and t3.co_id=t2.co_id and t2.userId=#{userid,jdbcType=INTEGER} and t1.result= #{result,jdbcType=CHAR}
+  	
+  </select>
+  
+  
+  
+</mapper>

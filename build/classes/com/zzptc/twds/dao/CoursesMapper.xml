@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.CoursesMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Courses" >
+    <id column="co_id" property="coId" jdbcType="INTEGER" />
+    <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="fId" property="fid" jdbcType="INTEGER" />
+    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+     <result column="co_type" property="coType" jdbcType="VARCHAR" />
+    <result column="co_week" property="coWeek" jdbcType="DOUBLE" />
+    <result column="co_weNum" property="coWenum" jdbcType="INTEGER" />
+    <result column="co_total" property="coTotal" jdbcType="DOUBLE" />
+    <result column="co_term" property="coTerm" jdbcType="VARCHAR" />
+      <result column="state" property="state" jdbcType="CHAR" />
+  </resultMap>
+   <sql id="Base_Column_List" >
+    co_id, c_id, fId, co_name, co_type,co_week, co_weNum, co_total, co_term,state
+  </sql>
+  
+  <!-- <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+ 
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.CoursesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from courses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.CoursesExample" >
+    delete from courses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.Courses" >
+    insert into courses (co_id, c_id, fId, 
+      co_name, co_week, co_weNum, 
+      co_total, co_term)
+    values (#{coId,jdbcType=INTEGER}, #{cId,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, 
+      #{coName,jdbcType=VARCHAR}, #{coWeek,jdbcType=DOUBLE}, #{coWenum,jdbcType=INTEGER}, 
+      #{coTotal,jdbcType=DOUBLE}, #{coTerm,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.CoursesExample" resultType="java.lang.Integer" >
+    select count(*) from courses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update courses
+    <set >
+      <if test="record.coId != null" >
+        co_id = #{record.coId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cId != null" >
+        c_id = #{record.cId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fid != null" >
+        fId = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.coName != null" >
+        co_name = #{record.coName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coWeek != null" >
+        co_week = #{record.coWeek,jdbcType=DOUBLE},
+      </if>
+      <if test="record.coWenum != null" >
+        co_weNum = #{record.coWenum,jdbcType=INTEGER},
+      </if>
+      <if test="record.coTotal != null" >
+        co_total = #{record.coTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.coTerm != null" >
+        co_term = #{record.coTerm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update courses
+    set co_id = #{record.coId,jdbcType=INTEGER},
+      c_id = #{record.cId,jdbcType=INTEGER},
+      fId = #{record.fid,jdbcType=INTEGER},
+      co_name = #{record.coName,jdbcType=VARCHAR},
+      co_week = #{record.coWeek,jdbcType=DOUBLE},
+      co_weNum = #{record.coWenum,jdbcType=INTEGER},
+      co_total = #{record.coTotal,jdbcType=DOUBLE},
+      co_term = #{record.coTerm,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Courses" >
+    update courses
+    set c_id = #{cId,jdbcType=INTEGER},
+      fId = #{fid,jdbcType=INTEGER},
+      co_name = #{coName,jdbcType=VARCHAR},
+      co_week = #{coWeek,jdbcType=DOUBLE},
+      co_weNum = #{coWenum,jdbcType=INTEGER},
+      co_total = #{coTotal,jdbcType=DOUBLE},
+      co_term = #{coTerm,jdbcType=VARCHAR}
+    where co_id = #{coId,jdbcType=INTEGER}
+  </update> -->
+  
+  
+   <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Courses" >
+    update courses
+    <set >
+      <if test="cId != null" >
+        c_id = #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        fId = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="coName != null" >
+        co_name = #{coName,jdbcType=VARCHAR},
+      </if>
+       <if test="coType != null" >
+        co_type = #{coType,jdbcType=VARCHAR},
+      </if>
+      <if test="coWeek != null" >
+        co_week = #{coWeek,jdbcType=DOUBLE},
+      </if>
+      <if test="coWenum != null" >
+        co_weNum = #{coWenum,jdbcType=INTEGER},
+      </if>
+      <if test="coTotal != null" >
+        co_total = #{coTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="coTerm != null" >
+        co_term = #{coTerm,jdbcType=VARCHAR},
+      </if>
+       <if test="state != null" >
+        state = #{state,jdbcType=CHAR},
+      </if>
+    </set>
+    where co_id = #{coId,jdbcType=INTEGER}
+  </update>
+  
+  
+  <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Courses" >
+    insert into courses
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coId != null" >
+        co_id,
+      </if>
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="fid != null" >
+        fId,
+      </if>
+      <if test="coName != null" >
+        co_name,
+      </if>
+      <if test="coType != null" >
+        co_type,
+      </if>
+      <if test="coWeek != null" >
+        co_week,
+      </if>
+      <if test="coWenum != null" >
+        co_weNum,
+      </if>
+      <if test="coTotal != null" >
+        co_total,
+      </if>
+      <if test="coTerm != null" >
+        co_term,
+      </if>
+       <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coId != null" >
+        #{coId,jdbcType=INTEGER},
+      </if>
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="coName != null" >
+        #{coName,jdbcType=VARCHAR},
+      </if>
+      <if test="coType != null" >
+        #{coType,jdbcType=VARCHAR},
+      </if>
+      <if test="coWeek != null" >
+        #{coWeek,jdbcType=DOUBLE},
+      </if>
+      <if test="coWenum != null" >
+        #{coWenum,jdbcType=INTEGER},
+      </if>
+      <if test="coTotal != null" >
+        #{coTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="coTerm != null" >
+        #{coTerm,jdbcType=VARCHAR},
+      </if>
+       <if test="state != null" >
+        state = #{state,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from courses
+    where co_id = #{coId,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <!--关联课程与学院表  -->
+  <select id="selectAllCourses" resultMap="coursesMap" parameterType="com.zzptc.twds.pojo.Courses" >
+  	<!-- select courses.*,college.c_name from courses
+  	inner join college on courses.c_id=college.c_id; -->
+  	 select t1.co_id,t1.c_id,t1.co_name,t1.co_type,t1.co_week,t1.co_weNum,t1.co_total,t1.co_term,t2.c_name,t3.fName,case t1.state when '0' then '未分配' when '1' then '已分配' end as state from courses t1,college t2,formula t3
+  	 where t1.c_id=t2.c_id and t1.fId=t3.fId
+  	 
+  	  <if test="state != null" >
+       and state = #{state,jdbcType=CHAR}
+      </if>
+  
+  </select>
+  
+  
+  <!--关联课程与学院表  -->
+  <select id="selectAllCoursesBycId" resultMap="coursesMap" parameterType="com.zzptc.twds.pojo.Courses" >
+  	<!-- select courses.*,college.c_name from courses
+  	inner join college on courses.c_id=college.c_id; -->
+  	 select t1.co_id,t1.co_name,t1.co_type,t1.co_week,t1.co_weNum,t1.co_total,t1.co_term,t2.c_name,t3.fName,case t1.state when '0' then '未分配' when '1' then '已分配' end as state  from courses t1,college t2,formula t3
+  	 where t1.c_id=t2.c_id and t1.fId=t3.fId and t2.c_id= #{cId,jdbcType=INTEGER}
+  	  <if test="coTerm != null" >
+     	 and t1.co_term= #{coTerm,jdbcType=VARCHAR}
+      </if>
+  	  <if test="state != null" >
+       and state = #{state,jdbcType=CHAR}
+      </if>
+  
+  </select>
+  
+  
+   <resultMap id="coursesMap" type="com.zzptc.twds.pojo.Courses" >
+    <id column="co_id" property="coId" jdbcType="INTEGER" />
+    <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="fId" property="fid" jdbcType="INTEGER" />
+    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+     <result column="co_type" property="coType" jdbcType="VARCHAR" />
+    <result column="co_week" property="coWeek" jdbcType="DOUBLE" />
+    <result column="co_weNum" property="coWenum" jdbcType="INTEGER" />
+    <result column="co_total" property="coTotal" jdbcType="DOUBLE" />
+    <result column="co_term" property="coTerm" jdbcType="VARCHAR" />
+     <result column="state" property="state" jdbcType="CHAR" />
+    <association property="college" javaType="com.zzptc.twds.pojo.College">
+    		 <id column="c_id" property="cId" jdbcType="INTEGER" />
+   			 <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    </association>
+    <association property="formula" javaType="com.zzptc.twds.pojo.Formula">
+    	<id column="fId" property="fid" jdbcType="INTEGER" />
+   		 <result column="fName" property="fname" jdbcType="VARCHAR" />
+    
+    </association>
+    
+  </resultMap>
+  
+  
+    <select id="selectByCoName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select * from courses 
+      where  co_name = #{coName,jdbcType=VARCHAR}
+  </select>
+  
+  
+    <select id="selectByPrimaryKey" resultMap="coursesMapById" parameterType="java.lang.Integer" >
+    select  t1.*,t2.c_name,t3.fName from courses t1,college t2,formula t3
+      where t1.co_id = #{coId,jdbcType=INTEGER} and t1.c_id=t2.c_id and t1.fId=t3.fId
+  </select>
+  
+   <resultMap id="coursesMapById" type="com.zzptc.twds.pojo.Courses" >
+    <id column="co_id" property="coId" jdbcType="INTEGER" />
+    <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="fId" property="fid" jdbcType="INTEGER" />
+    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+     <result column="co_type" property="coType" jdbcType="VARCHAR" />
+    <result column="co_week" property="coWeek" jdbcType="DOUBLE" />
+    <result column="co_weNum" property="coWenum" jdbcType="INTEGER" />
+    <result column="co_total" property="coTotal" jdbcType="DOUBLE" />
+    <result column="co_term" property="coTerm" jdbcType="VARCHAR" />
+    <association property="college" javaType="com.zzptc.twds.pojo.College">
+    		 <id column="c_id" property="cId" jdbcType="INTEGER" />
+   			 <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    </association>
+    <association property="formula" javaType="com.zzptc.twds.pojo.Formula">
+    	<id column="fId" property="fid" jdbcType="INTEGER" />
+   		 <result column="fName" property="fname" jdbcType="VARCHAR" />
+    
+    </association>
+    
+  </resultMap>
+  
+  <select id="selectBycoTerm" resultMap="coursesMap" parameterType="com.zzptc.twds.pojo.Courses">
+  select t1.co_id,t1.co_name,t1.co_type,t1.co_week,t1.co_weNum,t1.co_total,t1.co_term,t2.c_name,t3.fName,case t1.state when '0' then '未分配' when '1' then '已分配' end as state from courses t1,college t2,formula t3
+  	 where t1.c_id=t2.c_id and t1.fId=t3.fId and t1.co_term= #{coTerm,jdbcType=VARCHAR} 
+  	  <if test="cId != null" >
+  	 and t1.c_id= #{cId,jdbcType=INTEGER}
+  	 </if>
+  
+  </select>
+  	
+</mapper>

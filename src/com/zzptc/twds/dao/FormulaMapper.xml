@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.FormulaMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Formula" >
+    <id column="fId" property="fid" jdbcType="INTEGER" />
+    <result column="expression" property="expression" jdbcType="VARCHAR" />
+    <result column="fName" property="fname" jdbcType="VARCHAR" />
+    <result column="p1" property="p1" jdbcType="DOUBLE" />
+    <result column="p2" property="p2" jdbcType="DOUBLE" />
+    <result column="p3" property="p3" jdbcType="DOUBLE" />
+  </resultMap>
+    <sql id="Base_Column_List" >
+    fId, expression, fName, p1, p2, p3
+  </sql>
+  <!-- <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.FormulaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from formula
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from formula
+    where fId = #{fid,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.FormulaExample" >
+    delete from formula
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.Formula" >
+    insert into formula (fId, expression, fName, 
+      p1, p2, p3)
+    values (#{fid,jdbcType=INTEGER}, #{expression,jdbcType=VARCHAR}, #{fname,jdbcType=VARCHAR}, 
+      #{p1,jdbcType=DOUBLE}, #{p2,jdbcType=DOUBLE}, #{p3,jdbcType=DOUBLE})
+  </insert>
+ 
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.FormulaExample" resultType="java.lang.Integer" >
+    select count(*) from formula
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update formula
+    <set >
+      <if test="record.fid != null" >
+        fId = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.expression != null" >
+        expression = #{record.expression,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fname != null" >
+        fName = #{record.fname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.p1 != null" >
+        p1 = #{record.p1,jdbcType=DOUBLE},
+      </if>
+      <if test="record.p2 != null" >
+        p2 = #{record.p2,jdbcType=DOUBLE},
+      </if>
+      <if test="record.p3 != null" >
+        p3 = #{record.p3,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update formula
+    set fId = #{record.fid,jdbcType=INTEGER},
+      expression = #{record.expression,jdbcType=VARCHAR},
+      fName = #{record.fname,jdbcType=VARCHAR},
+      p1 = #{record.p1,jdbcType=DOUBLE},
+      p2 = #{record.p2,jdbcType=DOUBLE},
+      p3 = #{record.p3,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Formula" >
+    update formula
+    <set >
+      <if test="expression != null" >
+        expression = #{expression,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null" >
+        fName = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="p1 != null" >
+        p1 = #{p1,jdbcType=DOUBLE},
+      </if>
+      <if test="p2 != null" >
+        p2 = #{p2,jdbcType=DOUBLE},
+      </if>
+      <if test="p3 != null" >
+        p3 = #{p3,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where fId = #{fid,jdbcType=INTEGER}
+  </update>
+ -->
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from formula;
+  </select>
+  
+  <select id="selectByFname" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from formula where fName= #{fname,jdbcType=VARCHAR};
+  </select>
+  
+  
+   <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Formula" >
+    insert into formula
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fId,
+      </if>
+      <if test="expression != null" >
+        expression,
+      </if>
+      <if test="fname != null" >
+        fName,
+      </if>
+      <if test="p1 != null" >
+        p1,
+      </if>
+      <if test="p2 != null" >
+        p2,
+      </if>
+      <if test="p3 != null" >
+        p3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="expression != null" >
+        #{expression,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null" >
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="p1 != null" >
+        #{p1,jdbcType=DOUBLE},
+      </if>
+      <if test="p2 != null" >
+        #{p2,jdbcType=DOUBLE},
+      </if>
+      <if test="p3 != null" >
+        #{p3,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from formula
+    where fId = #{fid,jdbcType=INTEGER}
+  </delete>
+  
+  
+    <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Formula" >
+    update formula
+    set expression = #{expression,jdbcType=VARCHAR},
+      fName = #{fname,jdbcType=VARCHAR},
+      p1 = #{p1,jdbcType=DOUBLE},
+      p2 = #{p2,jdbcType=DOUBLE},
+      p3 = #{p3,jdbcType=DOUBLE}
+    where fId = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>

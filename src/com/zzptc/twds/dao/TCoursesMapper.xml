@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.TCoursesMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.TCourses" >
+    <id column="tId" property="tid" jdbcType="INTEGER" />
+    <result column="co_id" property="coId" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="cl_id" property="clId" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="CHAR" />
+  </resultMap>
+  
+    <sql id="Base_Column_List" >
+    tId, co_id, userId, cl_id,state
+  </sql>
+  <!-- <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.TCoursesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_courses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.TCoursesExample" >
+    delete from t_courses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.TCourses" >
+    insert into t_courses (tId, co_id, userId, 
+      cl_id)
+    values (#{tid,jdbcType=INTEGER}, #{coId,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{clId,jdbcType=INTEGER})
+  </insert>
+
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.TCoursesExample" resultType="java.lang.Integer" >
+    select count(*) from t_courses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_courses
+    <set >
+      <if test="record.tid != null" >
+        tId = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.coId != null" >
+        co_id = #{record.coId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.clId != null" >
+        cl_id = #{record.clId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_courses
+    set tId = #{record.tid,jdbcType=INTEGER},
+      co_id = #{record.coId,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=INTEGER},
+      cl_id = #{record.clId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+ 
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.TCourses" >
+    update t_courses
+    set co_id = #{coId,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      cl_id = #{clId,jdbcType=INTEGER}
+    where tId = #{tid,jdbcType=INTEGER}
+  </update> -->
+  
+  
+    <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.TCourses" >
+    insert into t_courses
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tId,
+      </if>
+      <if test="coId != null" >
+        co_id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="clId != null" >
+        cl_id,
+      </if>
+       <if test="state != null" >
+       state
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="coId != null" >
+        #{coId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="clId != null" >
+        #{clId,jdbcType=INTEGER},
+      </if>
+       <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectAll" resultMap="BaseResultMap"  >
+  	select * from t_courses  ;
+ 
+  </select>
+  
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  
+  	select * from t_courses where tId= #{tid,jdbcType=INTEGER}
+  
+  </select>
+  
+  
+   <select id="selectAllTCoursesByUserid" resultMap="tCoursesAll" parameterType="java.lang.Integer">
+  	select t2.*,t3.*,t4.*,t5.*,t1.tId,case t1.state when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as state  from t_courses t1,courses t2,classes t3,user t4,formula t5
+  	where t1.co_id=t2.co_id and t1.cl_id=t3.cl_id and t1.userId=t4.userId and t2.fId=t5.fId and t1.userId= #{userid,jdbcType=INTEGER} order by
+		t2.co_total desc
+ 
+  </select>
+  
+  
+  <select id="selectAllTCourses" resultMap="tCoursesAll" >
+  	select t2.*,t3.*,t4.*,t5.*,t1.tId,case t1.state when '0' then '审核中' when '1' then '申报通过' when '2' then '申报失败' end as state  from t_courses t1,courses t2,classes t3,user t4,formula t5
+  	where t1.co_id=t2.co_id and t1.cl_id=t3.cl_id and t1.userId=t4.userId and t2.fId=t5.fId 
+ 
+  </select>
+  
+  
+  
+  
+  
+   <resultMap id="tCoursesAll" type="com.zzptc.twds.pojo.TCourses" >
+   	    <id column="tId" property="tid" jdbcType="INTEGER" />
+	    <result column="co_id" property="coId" jdbcType="INTEGER" />
+	    <result column="userId" property="userid" jdbcType="INTEGER" />
+	    <result column="cl_id" property="clId" jdbcType="INTEGER" />
+	    <result column="state" property="state" jdbcType="CHAR" />
+   		<association property="courses" javaType="com.zzptc.twds.pojo.Courses">
+    		 <id column="co_id" property="coId" jdbcType="INTEGER" />
+		    <result column="c_id" property="cId" jdbcType="INTEGER" />
+		    <result column="fId" property="fid" jdbcType="INTEGER" />
+		    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+		     <result column="co_type" property="coType" jdbcType="VARCHAR" />
+		    <result column="co_week" property="coWeek" jdbcType="DOUBLE" />
+		    <result column="co_weNum" property="coWenum" jdbcType="INTEGER" />
+		    <result column="co_total" property="coTotal" jdbcType="DOUBLE" />
+		    <result column="co_term" property="coTerm" jdbcType="VARCHAR" />
+   		</association>
+    	<association property="classes" javaType="com.zzptc.twds.pojo.Classes">
+	    	<id column="cl_id" property="clId" jdbcType="INTEGER" />
+		    <result column="mId" property="mid" jdbcType="INTEGER" />
+		    <result column="cl_name" property="clName" jdbcType="VARCHAR" />
+		    <result column="cl_year" property="clYear" jdbcType="DATE" />
+		    <result column="cl_num" property="clNum" jdbcType="INTEGER" />
+    
+    	</association>
+    	<association property="user" javaType="com.zzptc.twds.pojo.User" >
+    		 <id column="userId" property="userid" jdbcType="INTEGER" />
+		    <result column="name" property="name" jdbcType="VARCHAR" />
+    	</association>
+    	 <association property="formula" javaType="com.zzptc.twds.pojo.Formula">
+    	<id column="fId" property="fid" jdbcType="INTEGER" />
+   		 <result column="fName" property="fname" jdbcType="VARCHAR" />
+    	 <result column="expression" property="expression" jdbcType="VARCHAR" />
+    </association>
+    
+  </resultMap>
+  
+    <select id="selectBycoId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_courses
+    where co_id = #{coId,jdbcType=INTEGER}
+  </select>
+  
+  
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_courses
+    where tId = #{tid,jdbcType=INTEGER}
+  </delete>
+  
+  
+   <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.TCourses" >
+    update t_courses
+    <set >
+      <if test="coId != null" >
+        co_id = #{coId,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="clId != null" >
+        cl_id = #{clId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tId = #{tid,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

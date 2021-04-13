@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/main.css" rel="stylesheet" type="text/css"/> 
+<link href="easyui/themes/icon.css" rel="stylesheet" type="text/css"/>
+<link href="easyui/themes/default/easyui.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+
+	function addTab(title,url){
+		
+		if($("#label").tabs('exists',title)){
+			$('#label').tabs('select',title);
+		}else{
+			//var content='<iframe scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;height:100%;"></iframe>';
+			var content='<div></div>';
+			$("#label").tabs('add',{
+				title:title,
+				content:content,
+				closable:true
+			});
+		}
+	}
+	
+	 function update(){
+		var oldpassword=$("#oldpassword").val();
+		var newpassword=$("#newpassword").val();
+		var newpassword1=$("#newpassword1").val();
+		if(oldpassword==null){
+			alert("密码不能为空");
+			return false;
+		}
+		if(newpassword!=newpassword1){ 
+			alert("两次输入密码不一致");
+			return false;
+		}
+		var data={'oldpassword':oldpassword,'newpassword':newpassword,'newpassword1':newpassword1,'username':'admin'};
+		$.ajax({
+			url:'update.action',	
+			type:'post',
+			data:data,
+			success:function(e){
+				alert(e.msg);
+			}
+		});
+	}
+
+</script>
+
+
+</head>
+<body class="easyui-layout" style="margin: 3px;" >
+	<div data-options="region:'north',split:true" style="height:90px;background: #1E90FF;border: 2px solid #1E90FF;border-radius: 5px;" >
+		<h1 class="title" style="color: white;">教师工作量申报系统</h1>
+		<p class="title-username" style="color: white;">欢迎!  admin<a href="logout.action" style="margin-left: 20px;color: white;">退出</a></p>	
+	</div>
+	<div data-options="region:'west',split:true,title:'目录'"  style="width:200px;">
+		<ul class="easyui-tree">
+			<li>
+				<span>一级目录1</span>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="addTab('文件1','#')">文件1</a></li>
+					<li><a href="javascript:void(0)" onclick="addTab('文件2','#')">文件2</a></li>				
+					<li><a href="javascript:void(0)" onclick="addTab('文件3','#')">文件3</a></li>
+					<li><a href="javascript:void(0)" onclick="addTab('文件4','#')">文件4</a></li>
+					<li><a href="javascript:void(0)" onclick="addTab('文件5','#')">文件5</a></li>
+				</ul>
+			</li>
+			<li>
+				<span>一级目录2</span>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="addTab('文件2-1','#')">文件2-1</a></li>
+					<li><a href="javascript:void(0)" onclick="addTab('文件2-2','#')">文件2-2</a></li>
+				
+				</ul>
+			</li>
+			<li>
+				<span>数据管理</span>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="addTab('用户管理','#')">用户管理</a></li>
+					<li><a href="javascript:void(0)" onclick="addTab('学院管理','#')">学院管理</a></li>
+					<li><a href="javascript:void(0)" onclick="addTab('工作管理','#')">工作管理</a></li>
+				
+				</ul>
+			</li>
+			<li>
+				<span>个人中心</span>
+				<ul>
+					<li><a href="javascript:void(0)" onclick="update()">修改密码</a></li>
+				
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div  data-options="region:'center',title:'首页'" >
+		<div id="label" class="easyui-tabs" >
+			<div title="home" style="width:100%;height:100%;">
+				hello world!</br>
+				hello world!
+			</div>
+		</div>
+	</div>
+	<div region="south" title="" split="true" style="height: 54px;background: #4169E1;border-radius: 2px solid #1E90FF; " >
+		<p style="text-align: center;color: white;">can i hlep you@版权所有</p>
+	</div>
+	
+	<!-- <div class="easyui-window" title="修改密码"  style="display: none;width:300px;height:220px;">
+		<form action="update.action" method="post" onsubmit="return update()" >
+			<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码：</span><input type="password" name="oldpassword"/></p>
+			<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</span><input type="password" name="newpassword"/></p>
+			<p><span>&nbsp;&nbsp;确认密码：</span><input type="password" name="newpassword1"/></p>
+			<p style="text-align: center;padding: 5px;">
+				<button type="submit" class="easyui-linkbutton" icon="icon-ok">确认</button>
+				<button type="submit" class="easyui-linkbutton" icon="icon-cancel">取消</button>
+			</p>
+		</form>
+	
+	</div> -->
+	
+	
+	
+	 <div class="easyui-window" title="修改密码"  style="display: none;width:300px;height:220px;">
+		
+			<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码：</span><input type="password" name="oldpassword" id="oldpassword"/></p>
+			<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</span><input type="password" name="newpassword" id="newpassword"/></p>
+			<p><span>&nbsp;&nbsp;确认密码：</span><input type="password" name="newpassword1" id="newpassword1"/></p>
+			<p style="text-align: center;padding: 5px;">
+				<button  class="easyui-linkbutton" onclick="update();" icon="icon-ok">确认</button>
+				<button  class="easyui-linkbutton" icon="icon-cancel">取消</button>
+			</p>
+		
+	
+	</div> 
+ 
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/classes/classes.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/college/addCollege.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/courses/addCourses.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/courses/courses.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/formula/addformula.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/formula/formula.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/main.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/major/addmajor.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/major/majors.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/tCourses/addTCourses.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/user/allUser.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/user/insertUser.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/user/updatePassword.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/workteam/addWorkteam.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/workteam/workteam.jsp=UTF-8

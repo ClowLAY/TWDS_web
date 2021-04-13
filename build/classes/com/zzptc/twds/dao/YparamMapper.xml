@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.YparamMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Yparam" >
+    <id column="yId" property="yid" jdbcType="INTEGER" />
+    <result column="fId" property="fid" jdbcType="INTEGER" />
+    <result column="floor" property="floor" jdbcType="INTEGER" />
+    <result column="toplimit" property="toplimit" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="DOUBLE" />
+  </resultMap>
+   <sql id="Base_Column_List" >
+    yId, fId, floor, toplimit, value
+  </sql>
+  
+ <!--  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    yId, fId, floor, toplimit, value
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.YparamExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yparam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yparam
+    where yId = #{yid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yparam
+    where yId = #{yid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.YparamExample" >
+    delete from yparam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.Yparam" >
+    insert into yparam (yId, fId, floor, 
+      toplimit, value)
+    values (#{yid,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{floor,jdbcType=INTEGER}, 
+      #{toplimit,jdbcType=INTEGER}, #{value,jdbcType=DOUBLE})
+  </insert>
+ 
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.YparamExample" resultType="java.lang.Integer" >
+    select count(*) from yparam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update yparam
+    <set >
+      <if test="record.yid != null" >
+        yId = #{record.yid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fid != null" >
+        fId = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.floor != null" >
+        floor = #{record.floor,jdbcType=INTEGER},
+      </if>
+      <if test="record.toplimit != null" >
+        toplimit = #{record.toplimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.value != null" >
+        value = #{record.value,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update yparam
+    set yId = #{record.yid,jdbcType=INTEGER},
+      fId = #{record.fid,jdbcType=INTEGER},
+      floor = #{record.floor,jdbcType=INTEGER},
+      toplimit = #{record.toplimit,jdbcType=INTEGER},
+      value = #{record.value,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Yparam" >
+    update yparam
+    <set >
+      <if test="fid != null" >
+        fId = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        floor = #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="toplimit != null" >
+        toplimit = #{toplimit,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where yId = #{yid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Yparam" >
+    update yparam
+    set fId = #{fid,jdbcType=INTEGER},
+      floor = #{floor,jdbcType=INTEGER},
+      toplimit = #{toplimit,jdbcType=INTEGER},
+      value = #{value,jdbcType=DOUBLE}
+    where yId = #{yid,jdbcType=INTEGER}
+  </update> -->
+  
+   <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Yparam" >
+    insert into yparam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yid != null" >
+        yId,
+      </if>
+      <if test="fid != null" >
+        fId,
+      </if>
+      <if test="floor != null" >
+        floor,
+      </if>
+      <if test="toplimit != null" >
+        toplimit,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yid != null" >
+        #{yid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null" >
+        #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="toplimit != null" >
+        #{toplimit,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectAll"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	select * from yparam where  fId = #{fid,jdbcType=INTEGER}
+  
+  </select>
+</mapper>

@@ -1,0 +1,24 @@
+
+
+.title{
+	margin-left: 20px;
+}
+.title-username{
+	position:absolute;
+	top:7px;
+	left: 81%;
+	color: white;
+}
+
+.title-username a{
+	outline: none;
+	text-decoration: none;
+	color: blue;
+}
+
+a{
+	text-decoration: none;
+	outline: none;
+	color: #000;
+}
+

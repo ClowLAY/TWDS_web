@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.OworkloadMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Oworkload" >
+    <id column="oId" property="oid" jdbcType="INTEGER" />
+    <result column="oType" property="otype" jdbcType="VARCHAR" />
+    <result column="oValue" property="ovalue" jdbcType="DOUBLE" />
+  </resultMap>
+  
+    <sql id="Base_Column_List" >
+    oId, oType, oValue
+  </sql>
+ <!--  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.OworkloadExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from oworkload
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+
+
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.OworkloadExample" >
+    delete from oworkload
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Oworkload" >
+    insert into oworkload
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        oId,
+      </if>
+      <if test="otype != null" >
+        oType,
+      </if>
+      <if test="ovalue != null" >
+        oValue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="otype != null" >
+        #{otype,jdbcType=VARCHAR},
+      </if>
+      <if test="ovalue != null" >
+        #{ovalue,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.OworkloadExample" resultType="java.lang.Integer" >
+    select count(*) from oworkload
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update oworkload
+    <set >
+      <if test="record.oid != null" >
+        oId = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.otype != null" >
+        oType = #{record.otype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ovalue != null" >
+        oValue = #{record.ovalue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update oworkload
+    set oId = #{record.oid,jdbcType=INTEGER},
+      oType = #{record.otype,jdbcType=VARCHAR},
+      oValue = #{record.ovalue,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Oworkload" >
+    update oworkload
+    set oType = #{otype,jdbcType=VARCHAR},
+      oValue = #{ovalue,jdbcType=DOUBLE}
+    where oId = #{oid,jdbcType=INTEGER}
+  </update> -->
+  
+    <insert id="insert" parameterType="com.zzptc.twds.pojo.Oworkload" >
+    insert into oworkload (oId, oType, oValue
+      )
+    values (#{oid,jdbcType=INTEGER}, #{otype,jdbcType=VARCHAR}, #{ovalue,jdbcType=DOUBLE}
+      )
+  </insert>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from oworkload;
+  
+  </select>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Oworkload" >
+    update oworkload
+    <set >
+      <if test="otype != null" >
+        oType = #{otype,jdbcType=VARCHAR},
+      </if>
+      <if test="ovalue != null" >
+        oValue = #{ovalue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where oId = #{oid,jdbcType=INTEGER}
+  </update>
+  
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oworkload
+    where oId = #{oid,jdbcType=INTEGER}
+  </delete>
+  
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oworkload
+    where oId = #{oid,jdbcType=INTEGER}
+  </select>
+</mapper>

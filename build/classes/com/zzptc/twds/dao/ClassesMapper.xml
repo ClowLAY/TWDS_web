@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.ClassesMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Classes" >
+    <id column="cl_id" property="clId" jdbcType="INTEGER" />
+    <result column="mId" property="mid" jdbcType="INTEGER" />
+    <result column="cl_name" property="clName" jdbcType="VARCHAR" />
+    <result column="cl_year" property="clYear" jdbcType="DATE" />
+    <result column="cl_num" property="clNum" jdbcType="INTEGER" />
+  </resultMap>
+   <sql id="Base_Column_List" >
+    cl_id, mId, cl_name, cl_year, cl_num
+  </sql>
+ <!--  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+ 
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.ClassesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+ 
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.ClassesExample" >
+    delete from classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.Classes" >
+    insert into classes (cl_id, mId, cl_name, 
+      cl_year, cl_num)
+    values (#{clId,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{clName,jdbcType=VARCHAR}, 
+      #{clYear,jdbcType=DATE}, #{clNum,jdbcType=INTEGER})
+  </insert>
+ 
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.ClassesExample" resultType="java.lang.Integer" >
+    select count(*) from classes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update classes
+    <set >
+      <if test="record.clId != null" >
+        cl_id = #{record.clId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mid != null" >
+        mId = #{record.mid,jdbcType=INTEGER},
+      </if>
+      <if test="record.clName != null" >
+        cl_name = #{record.clName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clYear != null" >
+        cl_year = #{record.clYear,jdbcType=DATE},
+      </if>
+      <if test="record.clNum != null" >
+        cl_num = #{record.clNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update classes
+    set cl_id = #{record.clId,jdbcType=INTEGER},
+      mId = #{record.mid,jdbcType=INTEGER},
+      cl_name = #{record.clName,jdbcType=VARCHAR},
+      cl_year = #{record.clYear,jdbcType=DATE},
+      cl_num = #{record.clNum,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Classes" >
+    update classes
+    set mId = #{mid,jdbcType=INTEGER},
+      cl_name = #{clName,jdbcType=VARCHAR},
+      cl_year = #{clYear,jdbcType=DATE},
+      cl_num = #{clNum,jdbcType=INTEGER}
+    where cl_id = #{clId,jdbcType=INTEGER}
+  </update> -->
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Classes" >
+    update classes
+    <set >
+      <if test="mid != null" >
+        mId = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="clName != null" >
+        cl_name = #{clName,jdbcType=VARCHAR},
+      </if>
+      <if test="clYear != null" >
+        cl_year = #{clYear,jdbcType=DATE},
+      </if>
+      <if test="clNum != null" >
+        cl_num = #{clNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cl_id = #{clId,jdbcType=INTEGER}
+  </update>
+  
+   <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Classes" >
+    insert into classes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clId != null" >
+        cl_id,
+      </if>
+      <if test="mid != null" >
+        mId,
+      </if>
+      <if test="clName != null" >
+        cl_name,
+      </if>
+      <if test="clYear != null" >
+        cl_year,
+      </if>
+      <if test="clNum != null" >
+        cl_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clId != null" >
+        #{clId,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="clName != null" >
+        #{clName,jdbcType=VARCHAR},
+      </if>
+      <if test="clYear != null" >
+        #{clYear,jdbcType=DATE},
+      </if>
+      <if test="clNum != null" >
+        #{clNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from classes
+    where cl_id = #{clId,jdbcType=INTEGER}
+  </delete>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	select * from classes;
+  
+  </select>
+  
+
+  
+  
+  <!--多表联合查询  -->
+  
+  <select id="selectAllClasses" resultMap="classesMap">
+  	select classes.*,majors.mName,majors.c_id
+  	from classes
+  	inner join majors on classes.mId=majors.mId
+  
+  </select>
+  <!--班级表与专业表联合查询  -->
+  	<resultMap type="com.zzptc.twds.pojo.Classes" id="classesMap">
+  		 <id column="cl_id" property="clId" jdbcType="INTEGER" />
+    <result column="mId" property="mid" jdbcType="INTEGER" />
+    <result column="cl_name" property="clName" jdbcType="VARCHAR" />
+    <result column="cl_year" property="clYear" jdbcType="DATE" />
+    <result column="cl_num" property="clNum" jdbcType="INTEGER" />
+  	<association property="majors" javaType="com.zzptc.twds.pojo.Majors">
+  		     <id column="mId" property="mid" jdbcType="INTEGER" />
+  		    <result column="mName" property="mname" jdbcType="VARCHAR" />
+  		     <result column="c_id" property="cId" jdbcType="INTEGER" />
+  	</association>
+  	</resultMap>
+  	
+  	
+  	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from classes
+    where cl_id = #{clId,jdbcType=INTEGER}
+  </select>
+
+  
+</mapper>

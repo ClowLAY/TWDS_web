@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzptc.twds.dao.XparamMapper" >
+  <resultMap id="BaseResultMap" type="com.zzptc.twds.pojo.Xparam" >
+    <id column="xId" property="xid" jdbcType="INTEGER" />
+    <result column="fId" property="fid" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="DOUBLE" />
+  </resultMap>
+    <sql id="Base_Column_List" >
+    xId, fId, value
+  </sql>
+<!--   <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    xId, fId, value
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zzptc.twds.pojo.XparamExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from xparam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xparam
+    where xId = #{xid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xparam
+    where xId = #{xid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zzptc.twds.pojo.XparamExample" >
+    delete from xparam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zzptc.twds.pojo.Xparam" >
+    insert into xparam (xId, fId, value
+      )
+    values (#{xid,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{value,jdbcType=DOUBLE}
+      )
+  </insert>
+
+  <select id="countByExample" parameterType="com.zzptc.twds.pojo.XparamExample" resultType="java.lang.Integer" >
+    select count(*) from xparam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update xparam
+    <set >
+      <if test="record.xid != null" >
+        xId = #{record.xid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fid != null" >
+        fId = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.value != null" >
+        value = #{record.value,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update xparam
+    set xId = #{record.xid,jdbcType=INTEGER},
+      fId = #{record.fid,jdbcType=INTEGER},
+      value = #{record.value,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzptc.twds.pojo.Xparam" >
+    update xparam
+    <set >
+      <if test="fid != null" >
+        fId = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where xId = #{xid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzptc.twds.pojo.Xparam" >
+    update xparam
+    set fId = #{fid,jdbcType=INTEGER},
+      value = #{value,jdbcType=DOUBLE}
+    where xId = #{xid,jdbcType=INTEGER}
+  </update> -->
+  
+    <insert id="insertSelective" parameterType="com.zzptc.twds.pojo.Xparam" >
+    insert into xparam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xid != null" >
+        xId,
+      </if>
+      <if test="fid != null" >
+        fId,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xid != null" >
+        #{xid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="selectAll" resultMap="BaseResultMap"  parameterType="java.lang.Integer">
+  	select * from xparam where  fId = #{fid,jdbcType=INTEGER} order by value asc
+  
+  </select>
+  
+</mapper>
