@@ -2,7 +2,7 @@
 教师工作量管理系统（分页由于时间原因只实现一部分，可以照搬）</br>
 后台：Springmvc+Spring+Mybatis</br>
 前台：easyui</br>
-数据库：MySQL(密码MD5加密，原始密码000000)
+数据库：MySQL(密码MD5加密，原始密码000000)</br>
 总体功能结构图：</br>
 ![image](https://user-images.githubusercontent.com/49858063/114570666-9bf69780-9ca8-11eb-8b56-58950015a456.png)
 部分页面展示：</br>
