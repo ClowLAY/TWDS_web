@@ -7,7 +7,7 @@
 ![image](https://user-images.githubusercontent.com/49858063/114572570-31def200-9caa-11eb-84e1-18e700715732.png)</br>
 
 总体功能结构图：</br>
-![image](https://user-images.githubusercontent.com/49858063/114570666-9bf69780-9ca8-11eb-8b56-58950015a456.png)
+![image](https://user-images.githubusercontent.com/49858063/114570666-9bf69780-9ca8-11eb-8b56-58950015a456.png)</br>
 部分页面展示：</br>
 ![image](https://user-images.githubusercontent.com/49858063/114570695-a022b500-9ca8-11eb-958c-43942b637103.png)
 ![image](https://user-images.githubusercontent.com/49858063/114570757-ae70d100-9ca8-11eb-8083-483fd879c851.png)
