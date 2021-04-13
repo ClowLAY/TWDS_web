@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="195fd715-7abb-4a7d-a8f9-3c8923cdbfb5" name="Default Changelist" comment="" />
+    <list default="true" id="195fd715-7abb-4a7d-a8f9-3c8923cdbfb5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/twds_web.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/twds_web.sql" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/twds_web.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="113">
+              <caret line="297" column="68" lean-forward="true" selection-start-line="297" selection-start-column="68" selection-end-line="297" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -69,6 +71,13 @@
         <entry key="D:/project/was" value="PREVIEW" />
         <entry key="E:/project" value="PREVIEW" />
       </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/twds_web.sql" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -154,15 +163,16 @@
       <option name="presentableId" value="Default" />
       <updated>1618317020122</updated>
       <workItem from="1618317027394" duration="1450000" />
-      <workItem from="1618318574091" duration="218000" />
+      <workItem from="1618318574091" duration="2761000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1798000" />
+    <option name="totallyTimeSpent" value="4211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21179625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -203,8 +213,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/twds_web.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        <state relative-caret-position="113">
+          <caret line="297" column="68" lean-forward="true" selection-start-line="297" selection-start-column="68" selection-end-line="297" selection-end-column="68" />
         </state>
       </provider>
     </entry>

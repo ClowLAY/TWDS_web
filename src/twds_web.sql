@@ -292,7 +292,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 1, '1', 'admin', '670b14728ad9902aecba32e22fa4f6bd', '崔老师', '1811552056@qq.com', '13554378723');
+INSERT INTO `user` VALUES (1, 1, '1', 'admin', '670b14728ad9902aecba32e22fa4f6bd', '崔老师', '666666@qq.com', '13554378723');
 INSERT INTO `user` VALUES (4, 2, '1', 'admin1', '21218cca77804d2ba1922c33e0151105', '李老师', '666666@qq.com', '13554378723');
 INSERT INTO `user` VALUES (5, 4, '2', 'teacher', '670b14728ad9902aecba32e22fa4f6bd', '刘老师', '666666@qq.com', '13554378723');
 INSERT INTO `user` VALUES (6, 3, '2', 'Teacher', '670b14728ad9902aecba32e22fa4f6bd', '王老师', '666666@qq.com', '13554378723');
